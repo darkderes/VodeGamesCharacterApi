@@ -1,0 +1,6 @@
+@VodeGamesCharacterApi_HostAddress = http://localhost:5145
+
+GET {{VodeGamesCharacterApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
