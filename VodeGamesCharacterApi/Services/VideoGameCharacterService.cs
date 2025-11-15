@@ -38,8 +38,15 @@ namespace VodeGamesCharacterApi.Services
 
         public Task<bool> DeleteCharacterAsync(int id)
         {
-            throw new NotImplementedException();
-        }
+            var character = context.Characters.Find(id);
+            if (character != null)
+            {
+                context.Characters.Remove(character);
+                context.SaveChanges();
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+            }
 
         public async Task<List<CharacterResponse>> GetAllCharactersAsync()
          => await context.Characters.Select(c => new CharacterResponse
@@ -63,8 +70,18 @@ namespace VodeGamesCharacterApi.Services
 
         public async Task<bool> UpdateCharacterAsync(int id, Character character)
         {
-            return true;
+            var existingCharacter = await context.Characters.FindAsync(id);
+            if (existingCharacter != null)
+            {
+                existingCharacter.Name = character.Name;
+                existingCharacter.Game = character.Game;
+                existingCharacter.Role = character.Role;
+                await context.SaveChangesAsync();
+                return true;
 
-        }
+
+            }
+            return false;
+        }   
     }
 }
