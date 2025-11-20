@@ -75,6 +75,35 @@ Ejemplo de JSON para POST/PUT:
 
 (adapta los nombres de campos según tu modelo real)
 
+## Pruebas (Tests)
+
+El proyecto incluye un conjunto completo de pruebas unitarias e integración usando:
+- **xUnit**: Framework de pruebas para .NET
+- **FluentAssertions**: Para aserciones expresivas y legibles
+- **Moq**: Para crear mocks de dependencias
+- **Entity Framework Core InMemory**: Para pruebas de base de datos en memoria
+
+### Ejecutar las pruebas
+
+1. Ejecutar todas las pruebas:
+   ```bash
+   dotnet test
+   ```
+
+2. Ejecutar las pruebas con detalles:
+   ```bash
+   dotnet test --verbosity normal
+   ```
+
+### Cobertura de pruebas
+
+El proyecto de pruebas (`VodeGamesCharacterApi.Tests`) incluye:
+- **Pruebas de Controlador** (`VideoGameCharacterControllerTests`): 9 pruebas que verifican el comportamiento de los endpoints de la API
+- **Pruebas de Servicio** (`VideoGameCharacterServiceTests`): 9 pruebas que validan la lógica de negocio y operaciones CRUD
+- **Pruebas de Modelo** (`CharacterTests`): 3 pruebas que verifican el comportamiento del modelo Character
+
+Total: 21 pruebas automatizadas
+
 ## Consideraciones
 - Este repositorio está pensado como recurso educativo; ajusta prácticas (validación, manejo de errores, DTOs, autenticación/autorization, tests) antes de usarlo en producción.
 - Usa DTOs y AutoMapper si quieres separar entidades de la capa de transporte.
